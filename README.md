@@ -2,7 +2,7 @@
 
 A warm, organic VS Code color theme inspired by fresh-picked vegetables at the farmers market.
 
-![Preview](https://raw.githubusercontent.com/YOUR_USERNAME/farm-to-table-theme/main/docs/screenshot.png)
+![Preview](https://raw.githubusercontent.com/chronick/farm-to-table-theme/main/docs/screenshot.png)
 
 ## Install
 
@@ -64,8 +64,8 @@ Perfect for managing your recipe collection as code!
 
 ## Links
 
-- [Live Preview](https://YOUR_USERNAME.github.io/farm-to-table-theme/)
-- [GitHub](https://github.com/YOUR_USERNAME/farm-to-table-theme)
+- [Live Preview](https://chronick.github.io/farm-to-table-theme/)
+- [GitHub](https://github.com/chronick/farm-to-table-theme)
 - [Cooklang](https://cooklang.org/) — The recipe markup language
 
 ## License

@@ -6,7 +6,7 @@
 
 ```bash
 # Clone your repo
-git clone https://github.com/YOUR_USERNAME/farm-to-table-theme.git
+git clone https://github.com/chronick/farm-to-table-theme.git
 cd farm-to-table-theme
 
 # Create symlink to Cursor extensions folder
@@ -130,7 +130,7 @@ git commit -m "Initial commit: Farm to Table theme v1.0.0"
 gh repo create farm-to-table-theme --public --source=. --push
 
 # Or manually:
-git remote add origin https://github.com/YOUR_USERNAME/farm-to-table-theme.git
+git remote add origin https://github.com/chronick/farm-to-table-theme.git
 git branch -M main
 git push -u origin main
 ```
@@ -148,7 +148,7 @@ The `docs/` folder contains a ready-to-go GitHub Pages site.
 3. Branch: `main`, folder: `/docs`
 4. Save
 
-Your site will be live at: `https://YOUR_USERNAME.github.io/farm-to-table-theme/`
+Your site will be live at: `https://chronick.github.io/farm-to-table-theme/`
 
 ---
 
