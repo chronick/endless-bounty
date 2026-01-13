@@ -341,17 +341,29 @@
     .file-types {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
     }
 
-    .file-types code {
+    .file-type {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .file-type code {
       background: var(--soil-light);
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-size: 0.85rem;
       color: var(--straw);
+    }
+
+    .file-type span {
+      font-size: 0.8rem;
+      color: var(--sage);
     }
 
     /* Examples Section */
@@ -541,9 +553,9 @@ Sauté <span class="cook-ing">@onion</span><span class="punctuation">{</span><sp
     <div class="cooklang-feature" style="color: var(--honey);">{amounts}<span>honey gold</span></div>
   </div>
   <div class="file-types">
-    <code>.cook</code> recipes
-    <code>.menu</code> meal plans
-    <code>aisle.conf</code> shopping config
+    <div class="file-type"><code>.cook</code><span>recipes</span></div>
+    <div class="file-type"><code>.menu</code><span>meal plans</span></div>
+    <div class="file-type"><code>aisle.conf</code><span>shopping config</span></div>
   </div>
 </section>
 
