@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm to Table — VS Code Theme</title>
+  <meta name="description" content="A warm, organic VS Code color theme inspired by fresh-picked vegetables at the farmers market.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --soil: #1a1611;
+      --soil-light: #2a2420;
+      --canvas: #faf6f0;
+      --canvas-dark: #f4efe6;
+      --spinach: #8cb369;
+      --spinach-dark: #4a7a32;
+      --carrot: #e07b39;
+      --apple: #c75d5d;
+      --squash: #d4a84b;
+      --eggplant: #9b6b9e;
+      --honey: #e0a458;
+      --sage: #7d8471;
+      --straw: #c9b896;
+      --cream: #e5ddd0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--soil);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+    
+    code, .code-block {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      background: linear-gradient(180deg, var(--soil) 0%, var(--soil-light) 100%);
+    }
+    
+    .hero-emoji {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero h1 span {
+      color: var(--spinach);
+    }
+    
+    .hero .tagline {
+      font-size: 1.25rem;
+      color: var(--straw);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    
+    .btn-primary {
+      background: var(--spinach);
+      color: var(--soil);
+    }
+    
+    .btn-secondary {
+      background: var(--soil-light);
+      color: var(--cream);
+      border: 1px solid var(--sage);
+    }
+    
+    /* Preview Section */
+    .preview-section {
+      padding: 3rem 2rem;
+    }
+    
+    .preview-section h2 {
+      text-align: center;
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+      color: var(--straw);
+    }
+    
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .theme-card {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .theme-card.dark {
+      background: var(--soil);
+      border: 1px solid var(--soil-light);
+    }
+    
+    .theme-card.light {
+      background: var(--canvas);
+      border: 1px solid var(--canvas-dark);
+    }
+    
+    .theme-header {
+      padding: 1rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    .dark .theme-header {
+      background: #151210;
+      color: var(--sage);
+      border-bottom: 1px solid var(--soil-light);
+    }
+    
+    .light .theme-header {
+      background: var(--canvas-dark);
+      color: #8a917d;
+      border-bottom: 1px solid #ddd5c5;
+    }
+    
+    .code-block {
+      padding: 1.25rem;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+    
+    .dark .code-block { background: #151210; }
+    .light .code-block { background: var(--canvas-dark); color: #3d3629; }
+    
+    /* Syntax - Dark */
+    .dark .comment { color: #7d8471; font-style: italic; }
+    .dark .keyword { color: #e07b39; }
+    .dark .string { color: #8cb369; }
+    .dark .function { color: #c75d5d; }
+    .dark .variable { color: #d4a84b; }
+    .dark .type { color: #9b6b9e; }
+    .dark .number { color: #e0a458; }
+    .dark .property { color: #e0c4a8; }
+    .dark .punctuation { color: #a89880; }
+    .dark .operator { color: #c9b896; }
+    .dark .param { color: #e0c4a8; font-style: italic; }
+    .dark .cook-ing { color: #8cb369; font-weight: 600; }
+    .dark .cook-ware { color: #c75d5d; font-weight: 600; }
+    .dark .cook-time { color: #9b6b9e; }
+    .dark .cook-amt { color: #e0a458; }
+    .dark .cook-unit { color: #d4a84b; }
+    .dark .cook-meta-k { color: #7a9cbf; }
+    .dark .cook-meta-v { color: #6a9f8e; }
+    
+    /* Syntax - Light */
+    .light .comment { color: #8a917d; font-style: italic; }
+    .light .keyword { color: #c75820; }
+    .light .string { color: #4a7a32; }
+    .light .function { color: #b84040; }
+    .light .variable { color: #996b1f; }
+    .light .type { color: #7a4a7d; }
+    .light .number { color: #b8852a; }
+    .light .property { color: #6b5a45; }
+    .light .punctuation { color: #7a6d5c; }
+    .light .operator { color: #7a6d5c; }
+    .light .param { color: #6b5a45; font-style: italic; }
+    .light .cook-ing { color: #4a7a32; font-weight: 600; }
+    .light .cook-ware { color: #b84040; font-weight: 600; }
+    .light .cook-time { color: #7a4a7d; }
+    .light .cook-amt { color: #b8852a; }
+    .light .cook-unit { color: #996b1f; }
+    .light .cook-meta-k { color: #4a6fa5; }
+    .light .cook-meta-v { color: #3a7a6a; }
+    
+    /* Palette Section */
+    .palette-section {
+      padding: 3rem 2rem;
+      background: var(--soil-light);
+    }
+    
+    .palette-section h2 {
+      text-align: center;
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .palette-section .subtitle {
+      text-align: center;
+      color: var(--sage);
+      margin-bottom: 2rem;
+    }
+    
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .swatch {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      transition: transform 0.15s ease;
+    }
+    
+    .swatch:hover {
+      transform: scale(1.05);
+    }
+    
+    .swatch-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .swatch-hex {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+    
+    .sw-spinach { background: #8cb369; color: #1a1611; }
+    .sw-carrot { background: #e07b39; color: #1a1611; }
+    .sw-apple { background: #c75d5d; color: #fff; }
+    .sw-squash { background: #d4a84b; color: #1a1611; }
+    .sw-eggplant { background: #9b6b9e; color: #fff; }
+    .sw-honey { background: #e0a458; color: #1a1611; }
+    .sw-tomato { background: #bf4b4b; color: #fff; }
+    .sw-sage { background: #7d8471; color: #fff; }
+    
+    /* Cooklang Section */
+    .cooklang-section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .cooklang-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cooklang-section p {
+      color: var(--straw);
+      max-width: 550px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .cooklang-section a {
+      color: var(--spinach);
+    }
+    
+    .cooklang-features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    
+    .cooklang-feature {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+    
+    .cooklang-feature span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--sage);
+      margin-top: 0.25rem;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--soil-light);
+      color: var(--sage);
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: var(--straw);
+    }
+    
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .tagline { font-size: 1rem; }
+      .buttons { flex-direction: column; align-items: center; }
+      .themes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-emoji">🥕</div>
+    <h1>Farm to <span>Table</span></h1>
+    <p class="tagline">A warm, organic VS Code theme inspired by fresh-picked vegetables at the farmers market.</p>
+    <div class="buttons">
+      <a href="https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.farm-to-table-theme" class="btn btn-primary">
+        Install Extension
+      </a>
+      <a href="https://github.com/YOUR_USERNAME/farm-to-table-theme" class="btn btn-secondary">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+  
+  <!-- Preview -->
+  <section class="preview-section">
+    <h2>Two Variants</h2>
+    <div class="themes-grid">
+      
+      <!-- Dark Theme -->
+      <div class="theme-card dark">
+        <div class="theme-header">Dark — Evening Market</div>
+        <div class="code-block">
+<span class="comment">// TypeScript</span>
+<span class="keyword">interface</span> <span class="type">Vegetable</span> <span class="punctuation">{</span>
+  <span class="property">name</span><span class="punctuation">:</span> <span class="type">string</span><span class="punctuation">;</span>
+  <span class="property">organic</span><span class="punctuation">:</span> <span class="type">boolean</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+
+<span class="keyword">const</span> <span class="variable">basket</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="param">items</span><span class="punctuation">)</span> <span class="keyword">=></span>
+  <span class="variable">items</span><span class="punctuation">.</span><span class="function">filter</span><span class="punctuation">(</span><span class="param">v</span> <span class="keyword">=></span> <span class="param">v</span><span class="punctuation">.</span><span class="property">organic</span><span class="punctuation">);</span>
+
+<span class="comment">-- Cooklang Recipe</span>
+<span class="cook-meta-k">>> servings:</span> <span class="cook-meta-v">4</span>
+
+Sauté <span class="cook-ing">@onion</span><span class="punctuation">{</span><span class="cook-amt">1</span><span class="punctuation">%</span><span class="cook-unit">medium</span><span class="punctuation">}</span> in a
+<span class="cook-ware">#large skillet</span> for <span class="cook-time">~{5%min}</span>.</div>
+      </div>
+      
+      <!-- Light Theme -->
+      <div class="theme-card light">
+        <div class="theme-header">Light — Morning Market</div>
+        <div class="code-block">
+<span class="comment">// TypeScript</span>
+<span class="keyword">interface</span> <span class="type">Vegetable</span> <span class="punctuation">{</span>
+  <span class="property">name</span><span class="punctuation">:</span> <span class="type">string</span><span class="punctuation">;</span>
+  <span class="property">organic</span><span class="punctuation">:</span> <span class="type">boolean</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+
+<span class="keyword">const</span> <span class="variable">basket</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="param">items</span><span class="punctuation">)</span> <span class="keyword">=></span>
+  <span class="variable">items</span><span class="punctuation">.</span><span class="function">filter</span><span class="punctuation">(</span><span class="param">v</span> <span class="keyword">=></span> <span class="param">v</span><span class="punctuation">.</span><span class="property">organic</span><span class="punctuation">);</span>
+
+<span class="comment">-- Cooklang Recipe</span>
+<span class="cook-meta-k">>> servings:</span> <span class="cook-meta-v">4</span>
+
+Sauté <span class="cook-ing">@onion</span><span class="punctuation">{</span><span class="cook-amt">1</span><span class="punctuation">%</span><span class="cook-unit">medium</span><span class="punctuation">}</span> in a
+<span class="cook-ware">#large skillet</span> for <span class="cook-time">~{5%min}</span>.</div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <!-- Palette -->
+  <section class="palette-section">
+    <h2>The Harvest</h2>
+    <p class="subtitle">Every color tells a story</p>
+    <div class="palette-grid">
+      <div class="swatch sw-spinach"><span class="swatch-name">Spinach</span><span class="swatch-hex">strings</span></div>
+      <div class="swatch sw-carrot"><span class="swatch-name">Carrot</span><span class="swatch-hex">keywords</span></div>
+      <div class="swatch sw-apple"><span class="swatch-name">Apple</span><span class="swatch-hex">functions</span></div>
+      <div class="swatch sw-squash"><span class="swatch-name">Squash</span><span class="swatch-hex">variables</span></div>
+      <div class="swatch sw-eggplant"><span class="swatch-name">Eggplant</span><span class="swatch-hex">types</span></div>
+      <div class="swatch sw-honey"><span class="swatch-name">Honey</span><span class="swatch-hex">numbers</span></div>
+      <div class="swatch sw-tomato"><span class="swatch-name">Tomato</span><span class="swatch-hex">constants</span></div>
+      <div class="swatch sw-sage"><span class="swatch-name">Sage</span><span class="swatch-hex">comments</span></div>
+    </div>
+  </section>
+  
+  <!-- Cooklang -->
+  <section class="cooklang-section">
+    <h2>🍳 First-Class Cooklang Support</h2>
+    <p>
+      We love <a href="https://cooklang.org/" target="_blank" rel="noopener">Cooklang</a> — the recipe markup language that lets you manage recipes as plain text files. Farm to Table includes beautiful syntax highlighting for <code>.cook</code> files.
+    </p>
+    <div class="cooklang-features">
+      <div class="cooklang-feature" style="color: var(--spinach);">@ingredients<span>spinach green</span></div>
+      <div class="cooklang-feature" style="color: var(--apple);">#cookware<span>apple red</span></div>
+      <div class="cooklang-feature" style="color: var(--eggplant);">~{timers}<span>eggplant purple</span></div>
+      <div class="cooklang-feature" style="color: var(--honey);">{amounts}<span>honey gold</span></div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>
+      Made with 🥬 · <a href="https://github.com/YOUR_USERNAME/farm-to-table-theme">GitHub</a> · <a href="https://cooklang.org/">Cooklang</a>
+    </p>
+    <p style="margin-top: 0.5rem; font-style: italic; opacity: 0.7;">
+      Locally sourced colors. No artificial flavors.
+    </p>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "name": "farm-to-table-theme",
+  "displayName": "Farm to Table",
+  "description": "A warm, organic color theme inspired by fresh-picked vegetables at the farmers market. Featuring spinach greens, carrot oranges, apple reds, and earthy soil tones.",
+  "version": "1.0.0",
+  "publisher": "YOUR_PUBLISHER_NAME",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "dark",
+    "light",
+    "organic",
+    "warm",
+    "nature",
+    "vegetables",
+    "farm",
+    "earthy",
+    "cooklang",
+    "markdown"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Farm to Table Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/farm-to-table-dark.json"
+      },
+      {
+        "label": "Farm to Table Light",
+        "uiTheme": "vs",
+        "path": "./themes/farm-to-table-light.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/farm-to-table-theme"
+  },
+  "homepage": "https://YOUR_USERNAME.github.io/farm-to-table-theme/",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/farm-to-table-theme/issues"
+  },
+  "galleryBanner": {
+    "color": "#1a1611",
+    "theme": "dark"
+  }
+}

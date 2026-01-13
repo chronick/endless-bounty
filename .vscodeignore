@@ -1,0 +1,11 @@
+# Files to exclude from vsix package
+.git/
+.github/
+.gitignore
+.vscodeignore
+node_modules/
+docs/
+*.md
+!README.md
+.DS_Store
+*.vsix

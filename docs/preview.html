@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm to Table - VS Code Theme Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    
+    h1 {
+      text-align: center;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, #2d2416, #1a1611);
+      color: #e5ddd0;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 1.5rem;
+    }
+    
+    h1 span {
+      color: #8cb369;
+    }
+    
+    .themes {
+      display: flex;
+    }
+    
+    .theme {
+      flex: 1;
+      padding: 1.25rem;
+    }
+    
+    .theme h2 {
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+    }
+    
+    .theme h3 {
+      margin: 1.25rem 0 0.5rem 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+    }
+    
+    /* Dark Theme */
+    .dark {
+      background: #1a1611;
+      color: #e5ddd0;
+    }
+    
+    .dark h2 { color: #a89880; }
+    .dark h3 { color: #7d8471; }
+    
+    /* Light Theme */
+    .light {
+      background: #faf6f0;
+      color: #3d3629;
+    }
+    
+    .light h2 { color: #7a6d5c; }
+    .light h3 { color: #8a917d; }
+    
+    /* Code Block Styling */
+    .code-block {
+      border-radius: 6px;
+      padding: 1rem;
+      font-size: 12px;
+      line-height: 1.55;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    
+    .dark .code-block {
+      background: #151210;
+      border: 1px solid #2a2420;
+    }
+    
+    .light .code-block {
+      background: #f4efe6;
+      border: 1px solid #ddd5c5;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       SYNTAX COLORS - DARK THEME
+       ═══════════════════════════════════════════════════════════════ */
+    .dark .comment { color: #7d8471; font-style: italic; }
+    .dark .keyword { color: #e07b39; }
+    .dark .string { color: #8cb369; }
+    .dark .function { color: #c75d5d; }
+    .dark .variable { color: #d4a84b; }
+    .dark .type { color: #9b6b9e; }
+    .dark .number { color: #e0a458; }
+    .dark .constant { color: #bf4b4b; }
+    .dark .operator { color: #c9b896; }
+    .dark .property { color: #e0c4a8; }
+    .dark .punctuation { color: #a89880; }
+    .dark .parameter { color: #e0c4a8; font-style: italic; }
+    
+    /* Markdown - Dark */
+    .dark .md-h1 { color: #e07b39; font-weight: bold; }
+    .dark .md-h2 { color: #c75d5d; font-weight: bold; }
+    .dark .md-h3 { color: #d4a84b; font-weight: bold; }
+    .dark .md-h4 { color: #9b6b9e; font-weight: bold; }
+    .dark .md-bold { color: #d4a84b; font-weight: bold; }
+    .dark .md-italic { color: #9b6b9e; font-style: italic; }
+    .dark .md-bold-italic { color: #b88ebb; font-weight: bold; font-style: italic; }
+    .dark .md-strike { color: #7d8471; text-decoration: line-through; }
+    .dark .md-link-text { color: #8cb369; }
+    .dark .md-link-url { color: #7a9cbf; text-decoration: underline; }
+    .dark .md-link-bracket { color: #6a9f8e; }
+    .dark .md-code { color: #8cb369; background: #1e1914; padding: 0.15em 0.35em; border-radius: 3px; }
+    .dark .md-code-fence { color: #5c5346; }
+    .dark .md-code-lang { color: #6a9f8e; }
+    .dark .md-quote { color: #a89880; font-style: italic; }
+    .dark .md-quote-mark { color: #6a9f8e; }
+    .dark .md-list { color: #c75d5d; }
+    .dark .md-hr { color: #5c5346; }
+    .dark .md-hash { color: #5c5346; }
+    .dark .md-checkbox { color: #8cb369; }
+    .dark .md-table-sep { color: #5c5346; }
+    
+    /* Cooklang - Dark */
+    .dark .cook-ingredient { color: #8cb369; font-weight: bold; }
+    .dark .cook-amount { color: #e0a458; }
+    .dark .cook-unit { color: #d4a84b; }
+    .dark .cook-cookware { color: #c75d5d; font-weight: bold; }
+    .dark .cook-timer { color: #9b6b9e; }
+    .dark .cook-timer-val { color: #b88ebb; }
+    .dark .cook-meta-key { color: #7a9cbf; }
+    .dark .cook-meta-val { color: #6a9f8e; }
+    .dark .cook-comment { color: #7d8471; font-style: italic; }
+    .dark .cook-text { color: #e5ddd0; }
+    .dark .cook-punct { color: #5c5346; }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       SYNTAX COLORS - LIGHT THEME
+       ═══════════════════════════════════════════════════════════════ */
+    .light .comment { color: #8a917d; font-style: italic; }
+    .light .keyword { color: #c75820; }
+    .light .string { color: #4a7a32; }
+    .light .function { color: #b84040; }
+    .light .variable { color: #996b1f; }
+    .light .type { color: #7a4a7d; }
+    .light .number { color: #b8852a; }
+    .light .constant { color: #a83030; }
+    .light .operator { color: #7a6d5c; }
+    .light .property { color: #6b5a45; }
+    .light .punctuation { color: #7a6d5c; }
+    .light .parameter { color: #6b5a45; font-style: italic; }
+    
+    /* Markdown - Light */
+    .light .md-h1 { color: #c75820; font-weight: bold; }
+    .light .md-h2 { color: #b84040; font-weight: bold; }
+    .light .md-h3 { color: #996b1f; font-weight: bold; }
+    .light .md-h4 { color: #7a4a7d; font-weight: bold; }
+    .light .md-bold { color: #996b1f; font-weight: bold; }
+    .light .md-italic { color: #7a4a7d; font-style: italic; }
+    .light .md-bold-italic { color: #8f5a92; font-weight: bold; font-style: italic; }
+    .light .md-strike { color: #8a917d; text-decoration: line-through; }
+    .light .md-link-text { color: #4a7a32; }
+    .light .md-link-url { color: #4a6fa5; text-decoration: underline; }
+    .light .md-link-bracket { color: #3a7a6a; }
+    .light .md-code { color: #4a7a32; background: #ebe4d8; padding: 0.15em 0.35em; border-radius: 3px; }
+    .light .md-code-fence { color: #9a8d7a; }
+    .light .md-code-lang { color: #3a7a6a; }
+    .light .md-quote { color: #6b5a45; font-style: italic; }
+    .light .md-quote-mark { color: #3a7a6a; }
+    .light .md-list { color: #b84040; }
+    .light .md-hr { color: #9a8d7a; }
+    .light .md-hash { color: #9a8d7a; }
+    .light .md-checkbox { color: #4a7a32; }
+    .light .md-table-sep { color: #9a8d7a; }
+    
+    /* Cooklang - Light */
+    .light .cook-ingredient { color: #4a7a32; font-weight: bold; }
+    .light .cook-amount { color: #b8852a; }
+    .light .cook-unit { color: #996b1f; }
+    .light .cook-cookware { color: #b84040; font-weight: bold; }
+    .light .cook-timer { color: #7a4a7d; }
+    .light .cook-timer-val { color: #8f5a92; }
+    .light .cook-meta-key { color: #4a6fa5; }
+    .light .cook-meta-val { color: #3a7a6a; }
+    .light .cook-comment { color: #8a917d; font-style: italic; }
+    .light .cook-text { color: #3d3629; }
+    .light .cook-punct { color: #9a8d7a; }
+    
+    /* Palette Display */
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    
+    .swatch {
+      aspect-ratio: 1;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      text-align: center;
+      padding: 0.2rem;
+    }
+    
+    .swatch-name {
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+    
+    .swatch-hex {
+      opacity: 0.8;
+      font-size: 0.5rem;
+    }
+    
+    /* Dark swatches */
+    .dark .sw-spinach { background: #8cb369; color: #1a1611; }
+    .dark .sw-carrot { background: #e07b39; color: #1a1611; }
+    .dark .sw-apple { background: #c75d5d; color: #1a1611; }
+    .dark .sw-squash { background: #d4a84b; color: #1a1611; }
+    .dark .sw-eggplant { background: #9b6b9e; color: #fff; }
+    .dark .sw-honey { background: #e0a458; color: #1a1611; }
+    .dark .sw-tomato { background: #bf4b4b; color: #fff; }
+    .dark .sw-sage { background: #7d8471; color: #fff; }
+    .dark .sw-soil { background: #1a1611; color: #e5ddd0; border: 1px solid #3a3228; }
+    .dark .sw-sky { background: #7a9cbf; color: #1a1611; }
+    
+    /* Light swatches */
+    .light .sw-spinach { background: #4a7a32; color: #fff; }
+    .light .sw-carrot { background: #c75820; color: #fff; }
+    .light .sw-apple { background: #b84040; color: #fff; }
+    .light .sw-squash { background: #996b1f; color: #fff; }
+    .light .sw-eggplant { background: #7a4a7d; color: #fff; }
+    .light .sw-honey { background: #b8852a; color: #fff; }
+    .light .sw-tomato { background: #a83030; color: #fff; }
+    .light .sw-sage { background: #8a917d; color: #fff; }
+    .light .sw-soil { background: #faf6f0; color: #3d3629; border: 1px solid #ddd5c5; }
+    .light .sw-sky { background: #4a6fa5; color: #fff; }
+  </style>
+</head>
+<body>
+  <h1>🥕 Farm to <span>Table</span></h1>
+  
+  <div class="themes">
+    <!-- ═══════════════════════════════════════════════════════════
+         DARK THEME
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="theme dark">
+      <h2>Dark — Evening Market</h2>
+      
+      <!-- TypeScript Example -->
+      <h3>TypeScript</h3>
+      <div class="code-block">
+<span class="comment">// Fresh from the garden</span>
+<span class="keyword">interface</span> <span class="type">Vegetable</span> <span class="punctuation">{</span>
+  <span class="property">name</span><span class="punctuation">:</span> <span class="type">string</span><span class="punctuation">;</span>
+  <span class="property">organic</span><span class="punctuation">:</span> <span class="type">boolean</span><span class="punctuation">;</span>
+  <span class="property">price</span><span class="punctuation">:</span> <span class="type">number</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+
+<span class="keyword">const</span> <span class="variable">basket</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="parameter">items</span><span class="punctuation">:</span> <span class="type">Vegetable</span><span class="punctuation">[])</span> <span class="keyword">=></span>
+  <span class="variable">items</span><span class="punctuation">.</span><span class="function">filter</span><span class="punctuation">(</span><span class="parameter">v</span> <span class="keyword">=></span> <span class="parameter">v</span><span class="punctuation">.</span><span class="property">organic</span><span class="punctuation">)</span><span class="punctuation">;</span>
+
+<span class="keyword">const</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">42.50</span><span class="punctuation">;</span>
+<span class="keyword">const</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="string">"Welcome!"</span><span class="punctuation">;</span></div>
+
+      <!-- Markdown Example -->
+      <h3>Markdown</h3>
+      <div class="code-block">
+<span class="md-hash">#</span> <span class="md-h1">Garden Fresh Recipes</span>
+
+<span class="md-hash">##</span> <span class="md-h2">Summer Salads</span>
+
+A collection of <span class="md-bold">**farm-fresh**</span> recipes using
+<span class="md-italic">*seasonal produce*</span> from your local market.
+
+<span class="md-hash">###</span> <span class="md-h3">What You'll Need</span>
+
+<span class="md-list">-</span> <span class="md-bold">**Leafy greens**</span>: spinach, arugula, kale
+<span class="md-list">-</span> <span class="md-italic">*Root vegetables*</span>: carrots, beets
+<span class="md-list">-</span> Fresh herbs like <span class="md-code">`basil`</span> and <span class="md-code">`mint`</span>
+
+<span class="md-hash">####</span> <span class="md-h4">Pro Tips</span>
+
+<span class="md-quote-mark">></span> <span class="md-quote">Always wash produce thoroughly and store</span>
+<span class="md-quote-mark">></span> <span class="md-quote">in a cool, dry place for best results.</span>
+
+<span class="md-link-bracket">[</span><span class="md-link-text">More recipes</span><span class="md-link-bracket">](</span><span class="md-link-url">https://garden.recipes</span><span class="md-link-bracket">)</span> <span class="md-table-sep">|</span> <span class="md-strike">~~old cookbook~~</span>
+
+<span class="md-code-fence">```</span><span class="md-code-lang">bash</span>
+<span class="variable">harvest</span> <span class="operator">--</span><span class="property">organic</span> <span class="operator">--</span><span class="property">local</span>
+<span class="md-code-fence">```</span>
+
+<span class="md-hr">---</span>
+
+<span class="md-checkbox">- [x]</span> Pick tomatoes
+<span class="md-checkbox">- [ ]</span> Water herbs</div>
+
+      <!-- Cooklang Example -->
+      <h3>Cooklang</h3>
+      <div class="code-block">
+<span class="cook-meta-key">&gt;&gt; source:</span> <span class="cook-meta-val">grandma's recipe box</span>
+<span class="cook-meta-key">&gt;&gt; servings:</span> <span class="cook-meta-val">4</span>
+<span class="cook-meta-key">&gt;&gt; time:</span> <span class="cook-meta-val">45 minutes</span>
+
+<span class="cook-comment">-- A hearty farm-to-table classic</span>
+
+<span class="cook-text">Preheat the</span> <span class="cook-cookware">#oven</span> <span class="cook-text">to</span> <span class="cook-amount">375</span><span class="cook-unit">°F</span><span class="cook-text">.</span>
+
+<span class="cook-text">Wash and chop</span> <span class="cook-ingredient">@spinach</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">cups</span><span class="cook-punct">}</span> <span class="cook-text">and set aside.</span>
+
+<span class="cook-text">In a</span> <span class="cook-cookware">#large skillet</span><span class="cook-text">, sauté</span> <span class="cook-ingredient">@onion</span><span class="cook-punct">{</span><span class="cook-amount">1</span><span class="cook-punct">%</span><span class="cook-unit">medium</span><span class="cook-punct">}</span>
+<span class="cook-text">with</span> <span class="cook-ingredient">@olive oil</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">tbsp</span><span class="cook-punct">}</span> <span class="cook-text">until translucent.</span>
+
+<span class="cook-text">Add</span> <span class="cook-ingredient">@garlic</span><span class="cook-punct">{</span><span class="cook-amount">3</span><span class="cook-punct">%</span><span class="cook-unit">cloves</span><span class="cook-punct">}</span> <span class="cook-text">and</span> <span class="cook-ingredient">@carrots</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">medium</span><span class="cook-punct">}</span><span class="cook-text">,</span>
+<span class="cook-text">cook for</span> <span class="cook-timer">~</span><span class="cook-punct">{</span><span class="cook-timer-val">5</span><span class="cook-punct">%</span><span class="cook-timer">minutes</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-text">Stir in</span> <span class="cook-ingredient">@tomatoes</span><span class="cook-punct">{</span><span class="cook-amount">14.5</span><span class="cook-punct">%</span><span class="cook-unit">oz can</span><span class="cook-punct">}</span> <span class="cook-text">and</span>
+<span class="cook-ingredient">@vegetable broth</span><span class="cook-punct">{</span><span class="cook-amount">1</span><span class="cook-punct">%</span><span class="cook-unit">cup</span><span class="cook-punct">}</span><span class="cook-text">. Simmer</span> <span class="cook-timer">~</span><span class="cook-punct">{</span><span class="cook-timer-val">20</span><span class="cook-punct">%</span><span class="cook-timer">minutes</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-text">Season with</span> <span class="cook-ingredient">@salt</span> <span class="cook-text">and</span> <span class="cook-ingredient">@black pepper</span> <span class="cook-text">to taste.</span>
+<span class="cook-text">Garnish with</span> <span class="cook-ingredient">@fresh basil</span><span class="cook-punct">{</span><span class="cook-amount">a handful</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-comment">[- Grandma always said: "Cook with love!" -]</span></div>
+
+      <!-- Palette -->
+      <h3>Palette</h3>
+      <div class="palette">
+        <div class="swatch sw-spinach"><span class="swatch-name">Spinach</span><span class="swatch-hex">#8cb369</span></div>
+        <div class="swatch sw-carrot"><span class="swatch-name">Carrot</span><span class="swatch-hex">#e07b39</span></div>
+        <div class="swatch sw-apple"><span class="swatch-name">Apple</span><span class="swatch-hex">#c75d5d</span></div>
+        <div class="swatch sw-squash"><span class="swatch-name">Squash</span><span class="swatch-hex">#d4a84b</span></div>
+        <div class="swatch sw-eggplant"><span class="swatch-name">Eggplant</span><span class="swatch-hex">#9b6b9e</span></div>
+        <div class="swatch sw-honey"><span class="swatch-name">Honey</span><span class="swatch-hex">#e0a458</span></div>
+        <div class="swatch sw-tomato"><span class="swatch-name">Tomato</span><span class="swatch-hex">#bf4b4b</span></div>
+        <div class="swatch sw-sage"><span class="swatch-name">Sage</span><span class="swatch-hex">#7d8471</span></div>
+        <div class="swatch sw-sky"><span class="swatch-name">Sky</span><span class="swatch-hex">#7a9cbf</span></div>
+        <div class="swatch sw-soil"><span class="swatch-name">Soil</span><span class="swatch-hex">#1a1611</span></div>
+      </div>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════
+         LIGHT THEME
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="theme light">
+      <h2>Light — Morning Market</h2>
+      
+      <!-- TypeScript Example -->
+      <h3>TypeScript</h3>
+      <div class="code-block">
+<span class="comment">// Fresh from the garden</span>
+<span class="keyword">interface</span> <span class="type">Vegetable</span> <span class="punctuation">{</span>
+  <span class="property">name</span><span class="punctuation">:</span> <span class="type">string</span><span class="punctuation">;</span>
+  <span class="property">organic</span><span class="punctuation">:</span> <span class="type">boolean</span><span class="punctuation">;</span>
+  <span class="property">price</span><span class="punctuation">:</span> <span class="type">number</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+
+<span class="keyword">const</span> <span class="variable">basket</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="parameter">items</span><span class="punctuation">:</span> <span class="type">Vegetable</span><span class="punctuation">[])</span> <span class="keyword">=></span>
+  <span class="variable">items</span><span class="punctuation">.</span><span class="function">filter</span><span class="punctuation">(</span><span class="parameter">v</span> <span class="keyword">=></span> <span class="parameter">v</span><span class="punctuation">.</span><span class="property">organic</span><span class="punctuation">)</span><span class="punctuation">;</span>
+
+<span class="keyword">const</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">42.50</span><span class="punctuation">;</span>
+<span class="keyword">const</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="string">"Welcome!"</span><span class="punctuation">;</span></div>
+
+      <!-- Markdown Example -->
+      <h3>Markdown</h3>
+      <div class="code-block">
+<span class="md-hash">#</span> <span class="md-h1">Garden Fresh Recipes</span>
+
+<span class="md-hash">##</span> <span class="md-h2">Summer Salads</span>
+
+A collection of <span class="md-bold">**farm-fresh**</span> recipes using
+<span class="md-italic">*seasonal produce*</span> from your local market.
+
+<span class="md-hash">###</span> <span class="md-h3">What You'll Need</span>
+
+<span class="md-list">-</span> <span class="md-bold">**Leafy greens**</span>: spinach, arugula, kale
+<span class="md-list">-</span> <span class="md-italic">*Root vegetables*</span>: carrots, beets
+<span class="md-list">-</span> Fresh herbs like <span class="md-code">`basil`</span> and <span class="md-code">`mint`</span>
+
+<span class="md-hash">####</span> <span class="md-h4">Pro Tips</span>
+
+<span class="md-quote-mark">></span> <span class="md-quote">Always wash produce thoroughly and store</span>
+<span class="md-quote-mark">></span> <span class="md-quote">in a cool, dry place for best results.</span>
+
+<span class="md-link-bracket">[</span><span class="md-link-text">More recipes</span><span class="md-link-bracket">](</span><span class="md-link-url">https://garden.recipes</span><span class="md-link-bracket">)</span> <span class="md-table-sep">|</span> <span class="md-strike">~~old cookbook~~</span>
+
+<span class="md-code-fence">```</span><span class="md-code-lang">bash</span>
+<span class="variable">harvest</span> <span class="operator">--</span><span class="property">organic</span> <span class="operator">--</span><span class="property">local</span>
+<span class="md-code-fence">```</span>
+
+<span class="md-hr">---</span>
+
+<span class="md-checkbox">- [x]</span> Pick tomatoes
+<span class="md-checkbox">- [ ]</span> Water herbs</div>
+
+      <!-- Cooklang Example -->
+      <h3>Cooklang</h3>
+      <div class="code-block">
+<span class="cook-meta-key">&gt;&gt; source:</span> <span class="cook-meta-val">grandma's recipe box</span>
+<span class="cook-meta-key">&gt;&gt; servings:</span> <span class="cook-meta-val">4</span>
+<span class="cook-meta-key">&gt;&gt; time:</span> <span class="cook-meta-val">45 minutes</span>
+
+<span class="cook-comment">-- A hearty farm-to-table classic</span>
+
+<span class="cook-text">Preheat the</span> <span class="cook-cookware">#oven</span> <span class="cook-text">to</span> <span class="cook-amount">375</span><span class="cook-unit">°F</span><span class="cook-text">.</span>
+
+<span class="cook-text">Wash and chop</span> <span class="cook-ingredient">@spinach</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">cups</span><span class="cook-punct">}</span> <span class="cook-text">and set aside.</span>
+
+<span class="cook-text">In a</span> <span class="cook-cookware">#large skillet</span><span class="cook-text">, sauté</span> <span class="cook-ingredient">@onion</span><span class="cook-punct">{</span><span class="cook-amount">1</span><span class="cook-punct">%</span><span class="cook-unit">medium</span><span class="cook-punct">}</span>
+<span class="cook-text">with</span> <span class="cook-ingredient">@olive oil</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">tbsp</span><span class="cook-punct">}</span> <span class="cook-text">until translucent.</span>
+
+<span class="cook-text">Add</span> <span class="cook-ingredient">@garlic</span><span class="cook-punct">{</span><span class="cook-amount">3</span><span class="cook-punct">%</span><span class="cook-unit">cloves</span><span class="cook-punct">}</span> <span class="cook-text">and</span> <span class="cook-ingredient">@carrots</span><span class="cook-punct">{</span><span class="cook-amount">2</span><span class="cook-punct">%</span><span class="cook-unit">medium</span><span class="cook-punct">}</span><span class="cook-text">,</span>
+<span class="cook-text">cook for</span> <span class="cook-timer">~</span><span class="cook-punct">{</span><span class="cook-timer-val">5</span><span class="cook-punct">%</span><span class="cook-timer">minutes</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-text">Stir in</span> <span class="cook-ingredient">@tomatoes</span><span class="cook-punct">{</span><span class="cook-amount">14.5</span><span class="cook-punct">%</span><span class="cook-unit">oz can</span><span class="cook-punct">}</span> <span class="cook-text">and</span>
+<span class="cook-ingredient">@vegetable broth</span><span class="cook-punct">{</span><span class="cook-amount">1</span><span class="cook-punct">%</span><span class="cook-unit">cup</span><span class="cook-punct">}</span><span class="cook-text">. Simmer</span> <span class="cook-timer">~</span><span class="cook-punct">{</span><span class="cook-timer-val">20</span><span class="cook-punct">%</span><span class="cook-timer">minutes</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-text">Season with</span> <span class="cook-ingredient">@salt</span> <span class="cook-text">and</span> <span class="cook-ingredient">@black pepper</span> <span class="cook-text">to taste.</span>
+<span class="cook-text">Garnish with</span> <span class="cook-ingredient">@fresh basil</span><span class="cook-punct">{</span><span class="cook-amount">a handful</span><span class="cook-punct">}</span><span class="cook-text">.</span>
+
+<span class="cook-comment">[- Grandma always said: "Cook with love!" -]</span></div>
+
+      <!-- Palette -->
+      <h3>Palette</h3>
+      <div class="palette">
+        <div class="swatch sw-spinach"><span class="swatch-name">Spinach</span><span class="swatch-hex">#4a7a32</span></div>
+        <div class="swatch sw-carrot"><span class="swatch-name">Carrot</span><span class="swatch-hex">#c75820</span></div>
+        <div class="swatch sw-apple"><span class="swatch-name">Apple</span><span class="swatch-hex">#b84040</span></div>
+        <div class="swatch sw-squash"><span class="swatch-name">Squash</span><span class="swatch-hex">#996b1f</span></div>
+        <div class="swatch sw-eggplant"><span class="swatch-name">Eggplant</span><span class="swatch-hex">#7a4a7d</span></div>
+        <div class="swatch sw-honey"><span class="swatch-name">Honey</span><span class="swatch-hex">#b8852a</span></div>
+        <div class="swatch sw-tomato"><span class="swatch-name">Tomato</span><span class="swatch-hex">#a83030</span></div>
+        <div class="swatch sw-sage"><span class="swatch-name">Sage</span><span class="swatch-hex">#8a917d</span></div>
+        <div class="swatch sw-sky"><span class="swatch-name">Sky</span><span class="swatch-hex">#4a6fa5</span></div>
+        <div class="swatch sw-soil"><span class="swatch-name">Canvas</span><span class="swatch-hex">#faf6f0</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
